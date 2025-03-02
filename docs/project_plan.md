@@ -11,4 +11,4 @@ Due: March 9
 
 As discussed in March 2 project meeting.  Everyone picks a couple of algorhithms to test on the data that's been collected and adds .py file to src folder and visualizations to the figs folder.  We will pick the best algorhithm for clustering in our March 9 meeting.
 
-Additional spring planning to come!
+Additional sprint planning to come!
