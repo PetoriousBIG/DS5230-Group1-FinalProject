@@ -1,5 +1,9 @@
 import pickle
 from selenium import webdriver
+"""
+After saving cookies, we need to load it and refresh the page to apply cookies. 
+This is one time process. After the cookies is added, you are free to go. 
+"""
 
 # Open Google Scholar
 driver = webdriver.Chrome()

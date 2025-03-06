@@ -63,7 +63,7 @@ def get_abstract(paper_url):
         elif "wiley.com" in paper_url:
             try:
                 abstract = wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'article-section__content')]"))
+                    EC.presence_of_element_located((By.XPATH, "//div[@class='article-section__content en main']/p"))
                 ).text
             except Exception as e:
                 print("Wiley abstract not found:", e)

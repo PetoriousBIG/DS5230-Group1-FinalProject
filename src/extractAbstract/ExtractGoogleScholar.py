@@ -14,26 +14,28 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless")  # Run in headless mode (no browser window)
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-def get_google_scholar_results(query):
-    search_url = f"https://scholar.google.com/scholar?q={query.replace(' ', '+')}"
-    driver.get(search_url)
-    time.sleep(5)  # Wait for the page to load
-
-    # Parse page source with BeautifulSoup
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    papers = soup.find_all("div", class_="gs_ri")
-
+def get_google_scholar_results(query, num_pages = 1):
     results = []
-    for paper in papers:
-        title_tag = paper.find("h3", class_="gs_rt")
-        desc_tag = paper.find("div", class_="gs_rs")  # The "description" field
-        link_tag = title_tag.find("a") if title_tag else None  # Get the paper link
+    for i in range(num_pages):
+        start_index = int(10*num_pages)
+        search_url = f"https://scholar.google.com/scholar?hl=en&q={query.replace(' ', '+')}&start={start_index}"
+        driver.get(search_url)
+        time.sleep(5)  # Wait for the page to load
 
-        title = title_tag.text if title_tag else "No title available"
-        description = desc_tag.text if desc_tag else "No description available"
-        link = link_tag['href'] if link_tag else "No link available"
+        # Parse page source with BeautifulSoup
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        papers = soup.find_all("div", class_="gs_ri")
 
-        results.append({"title": title, "description": description, "link": link})
+        for paper in papers:
+            title_tag = paper.find("h3", class_="gs_rt")
+            desc_tag = paper.find("div", class_="gs_rs")  # The "description" field
+            link_tag = title_tag.find("a") if title_tag else None  # Get the paper link
+
+            title = title_tag.text if title_tag else "No title available"
+            description = desc_tag.text if desc_tag else "No description available"
+            link = link_tag['href'] if link_tag else "No link available"
+
+            results.append({"title": title, "description": description, "link": link})
     
     return results
 
@@ -92,7 +94,7 @@ def get_abstract(paper_url):
         elif "wiley.com" in paper_url:
             try:
                 abstract = wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'article-section__content')]"))
+                    EC.presence_of_element_located((By.XPATH, "//div[@class='article-section__content en main']/p"))
                 ).text
             except Exception as e:
                 print("Wiley abstract not found:", e)
@@ -118,6 +120,7 @@ print("Start.")
 query = "pca"
 papers = get_google_scholar_results(query)
 
+print("number of resources: ", len(papers))
 for paper in papers:
     url = paper['link']
     abstract = get_abstract(url)
