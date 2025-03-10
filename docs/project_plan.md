@@ -9,11 +9,15 @@ Due: March 9 (if that is too soon we can move it)
 
 As discussed in March 2 project meeting. The point of this is to gather comprehensive key words and topics to guide the process of creating parameters for future broader scraping of information.  The process at this point may scrape just keywords and executive summaries from Google Scholar. The .py file to execute the data scrape to be stored in src folder in the git repository. In sprint 3, we will run clustering analysis to identify the right parameters to organize existing data and new data.
 
-Need to do data cleaning/EDA and preprocessing by someone 
+**Spring 1.5: EDA, data preprocessing, and dimensionality reduction
+
+NEED A VOLUNTEER
+
+Deliverable from the EDA leaders: Explain what you discovered in the data, what data preprocessing and dimienstionality reduction was performed
 
 **Sprint Two: Represent the data using unsupervised embeddings**
 
-Everyone
+EVERYONE NEEDS TO PICK AN APPROACH AND STAY IN THEIR LANE
 
 Due: March 16
 
@@ -23,39 +27,38 @@ i. Use TF-IDF, Word2Vec, or Sentence-BERT to generate vector representations.
 
 ii. Students are encouraged to experiment with different embedding models, including popular LLM-based embedding generators.
 
-Do a comparative study to determine which embedding is the best one for our data?
+Deliverable from the whole team: A comparative study to determine which embedding is the best one for our data: As part of the process of testing your approach, note the strengths and weakness for your approach for our data
 
 **Sprint Three: Perform clustering analysis on the collected and embedded data**
 
-Everyone
-
-Due: March 23
-
-As discussed in March 2 project meeting. Everyone picks a couple of algorithms to test on the data that's been collected and adds .py file to src folder and visualizations to the figs folder from that analysis. We will pick the best algorithm for clustering in our March 23 meeting.
-
-Determine which algos work best on our data, do a comparative study on which works the best; alsoo first need to determine the best dimenstionality tecthniques
-
-**Sprint Four: Testing**
-
-TBD
+We will discuss which algorhithms to test once our embedding work is completed, hopefully by March 16, and then each of us will work on a different algorhithm to which we have assigned ourselves
 
 Due: March 31
 
-Test the validity of the clusters (using the Google Scholar keywords?) and determine how to connect the core topic nodes
+Once we have decided which algorhitms to test, each of us will pick a different one on which to focus and stay in our lane. Evaluate the model results as well, then store .py file to src folder and visualizations to the figs folder from that analysis. We will pick the best algorithm for clustering in our March 31 meeting.
 
+Deliverable from the whole team:  Explain why we picked the algorhithm we picked as best
+
+**Sprint Four: Mind Mapping**
+
+TBD
+
+Due: April 7
+
+How do we mind map the different clusters so that there is a progression from one to the next?  
 
 
 **Sprint Five: Process for augmenting data**
 
 TBD
 
-Due: April 7
+Due: April 14
 
 Create process for automating incorporating additional information sources, which will require scraping the data and then identifying which cluster(s) this new information belongs to. Test validity of clusters again once new data has been ingested.
 
 
-Three outcomes for the project:
-Best vectoriztion
-Best dimienstionality reductions
-Best algorhithms
+Three minimum outcomes for the project:
+* Best dimensionality reductions and preprocessing activity
+* Best vectoriztion embedding process
+* Best algorhithm(s) for clustering
 
