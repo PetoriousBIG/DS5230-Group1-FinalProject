@@ -58,7 +58,7 @@ Create process for automating incorporating additional information sources, whic
 
 
 Three minimum outcomes for the project:
-* Best dimensionality reductions and preprocessing activity
-* Best vectoriztion embedding process
-* Best algorhithm(s) for clustering
+* Best dimensionality reductions and preprocessing activity 
+* Best vectorization embedding process 
+* Best algorithm(s) for clustering 
 
