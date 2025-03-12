@@ -9,20 +9,46 @@ import json
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import re
+
+nltk.download("punkt_tab")
+nltk.download("stopwords")
+stop_words = set(stopwords.words("english"))
+stop_word_add = [
+    "abstract",
+    ".",
+    ":",
+    "'",
+    '"',
+    ",",
+    "%",
+    "&",
+]
+stop_words.update(stop_word_add)
+print(stop_words)
+
+
 # Set up Selenium WebDriver
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")  # Run in headless mode (no browser window)
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
 
-def get_google_scholar_results(query, num_pages = 1):
+
+def get_google_scholar_results(query, num_pages=1):
     results = []
     for i in range(num_pages):
-        start_index = int(10*num_pages)
+        start_index = int(10 * num_pages)
         search_url = f"https://scholar.google.com/scholar?hl=en&q={query.replace(' ', '+')}&start={start_index}"
         driver.get(search_url)
         time.sleep(5)  # Wait for the page to load
 
-        # Parse page source with BeautifulSoup
+        # Parse page source with Beautifu   lSoup
         soup = BeautifulSoup(driver.page_source, "html.parser")
         papers = soup.find_all("div", class_="gs_ri")
 
@@ -33,11 +59,12 @@ def get_google_scholar_results(query, num_pages = 1):
 
             title = title_tag.text if title_tag else "No title available"
             description = desc_tag.text if desc_tag else "No description available"
-            link = link_tag['href'] if link_tag else "No link available"
+            link = link_tag["href"] if link_tag else "No link available"
 
             results.append({"title": title, "description": description, "link": link})
-    
+
     return results
+
 
 def get_abstract(paper_url):
     headers = {
@@ -69,8 +96,10 @@ def get_abstract(paper_url):
     try:
         options = webdriver.ChromeOptions()
         # REMOVE HEADLESS MODE FOR DEBUGGING
-        #options.add_argument("--headless")  # REMOVE this line to see browser actions
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        # options.add_argument("--headless")  # REMOVE this line to see browser actions
+        driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()), options=options
+        )
         driver.get(paper_url)
 
         wait = WebDriverWait(driver, 15)  # Increased wait time
@@ -85,7 +114,9 @@ def get_abstract(paper_url):
         if "sciencedirect.com" in paper_url:
             try:
                 abstract = wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'Abstracts')]"))
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//div[contains(@class, 'Abstracts')]")
+                    )
                 ).text
             except Exception as e:
                 print("ScienceDirect abstract not found:", e)
@@ -94,7 +125,9 @@ def get_abstract(paper_url):
         elif "wiley.com" in paper_url:
             try:
                 abstract = wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//div[@class='article-section__content en main']/p"))
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//div[@class='article-section__content en main']/p")
+                    )
                 ).text
             except Exception as e:
                 print("Wiley abstract not found:", e)
@@ -103,7 +136,9 @@ def get_abstract(paper_url):
         elif "ieee.org" in paper_url:
             try:
                 abstract = wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'abstract-text')]"))
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//div[contains(@class, 'abstract-text')]")
+                    )
                 ).text
             except Exception as e:
                 print("IEEE abstract not found:", e)
@@ -115,16 +150,32 @@ def get_abstract(paper_url):
         print("Selenium method failed:", e)
         return None
 
+
 print("Start.")
 # Example search query
 query = "pca"
 papers = get_google_scholar_results(query)
 
 print("number of resources: ", len(papers))
+
+abstract_total = []
 for paper in papers:
-    url = paper['link']
+    url = paper["link"]
     abstract = get_abstract(url)
-    print(abstract)
+    if abstract is not None:
+        abstract_total.append(abstract)
+        print(abstract.lower())
+
+        abstract_cleaned = re.sub(r"\([^)]*\)", "", abstract.lower())
+
+        word_tokens = word_tokenize(abstract_cleaned)
+        filtered_sentence = []
+
+        for w in word_tokens:
+            if w not in stop_words:
+                filtered_sentence.append(w)
+
+        print(filtered_sentence)
+
 # Close the driver
 driver.quit()
-
