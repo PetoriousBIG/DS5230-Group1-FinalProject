@@ -1,5 +1,6 @@
 import pickle
 from selenium import webdriver
+
 """
 Reason to do this is because Google Scholar prevents a CAPTCHA challenge to verify user is a robot or human. Using python
 to access the description or details of the paper needs to receive the access first. 

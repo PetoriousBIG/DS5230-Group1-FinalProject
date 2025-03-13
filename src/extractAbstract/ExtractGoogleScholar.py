@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 import nltk
+from stop_words import get_stop_words
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
@@ -18,7 +19,7 @@ import re
 nltk.download("punkt_tab")
 nltk.download("stopwords")
 stop_words = set(stopwords.words("english"))
-stop_word_add = [
+stop_word_add = list(get_stop_words("en")) + [
     "abstract",
     ".",
     ":",
@@ -158,13 +159,12 @@ papers = get_google_scholar_results(query)
 
 print("number of resources: ", len(papers))
 
-abstract_total = []
+abstract_filter_total = []
 for paper in papers:
     url = paper["link"]
     abstract = get_abstract(url)
     if abstract is not None:
-        abstract_total.append(abstract)
-        print(abstract.lower())
+        # print(abstract.lower())
 
         abstract_cleaned = re.sub(r"\([^)]*\)", "", abstract.lower())
 
@@ -175,7 +175,10 @@ for paper in papers:
             if w not in stop_words:
                 filtered_sentence.append(w)
 
-        print(filtered_sentence)
+        # print(filtered_sentence)
+        abstract_filter_total.append(filtered_sentence)
 
+unique_words = list(set(abstract_filter_total))
+print(unique_words)
 # Close the driver
 driver.quit()
