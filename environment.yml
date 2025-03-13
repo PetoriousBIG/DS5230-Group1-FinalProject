@@ -186,6 +186,7 @@ dependencies:
   - soupsieve=2.5=pyhd8ed1ab_1
   - stack_data=0.6.3=pyhd8ed1ab_1
   - statsmodels=0.14.4=py39hf3d9206_0
+  - stop-words=2018.7.23=pyh9f0ad1d_0
   - threadpoolctl=3.5.0=pyhc1e730c_0
   - tk=8.6.13=noxft_h4845f30_101
   - tornado=6.4.2=py39h8cd3c5a_0
