@@ -23,11 +23,13 @@ conda activate ds5230
 ## Testing with Google Scholar.
 
 - Use following command to avoid manually solving CAPTHA:
-````
+
+```
 make cookie
 ```
 
 - Use following command to search through google scholar's abstract:
+
 ```
 make search_scholar
 ```
