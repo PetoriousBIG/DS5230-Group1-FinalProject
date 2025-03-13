@@ -33,4 +33,4 @@ make cookie
 ```
 make search_scholar
 ```
-- This is going to display on command line unique words that are being presented on each abstract.
+- This is going to display on command line unique words that were shown from the searched papers that their abstracts were retrieved.
