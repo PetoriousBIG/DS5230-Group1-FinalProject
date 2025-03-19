@@ -8,37 +8,13 @@ import requests
 import json
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import pandas as pd
 
 import nltk
 from stop_words import get_stop_words
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
-
-nltk.download("punkt_tab")
-nltk.download("stopwords")
-stop_words = set(stopwords.words("english"))
-stop_word_add = list(get_stop_words("en")) + [
-    "abstract",
-    ".",
-    ":",
-    "'",
-    '"',
-    ",",
-    "%",
-    "&",
-]
-stop_words.update(stop_word_add)
-print(stop_words)
-
-
-# Set up Selenium WebDriver
-options = webdriver.ChromeOptions()
-options.add_argument("--headless")  # Run in headless mode (no browser window)
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=options
-)
 
 
 def get_google_scholar_results(query, num_pages=1):
@@ -152,33 +128,98 @@ def get_abstract(paper_url):
         return None
 
 
-print("Start.")
-# Example search query
-query = "pca"
-papers = get_google_scholar_results(query)
+def string_to_count_df(df, column_name, separator=None):
+    """
+    Converts a string DataFrame column to a count DataFrame.
 
-print("number of resources: ", len(papers))
+    Args:
+        df (pd.DataFrame): The input DataFrame.
+        column_name (str): The name of the column to process.
+        separator (str, optional): Separator for splitting strings. Defaults to None (no split).
 
-abstract_filter_total = []
-for paper in papers:
-    url = paper["link"]
-    abstract = get_abstract(url)
-    if abstract is not None:
-        # print(abstract.lower())
+    Returns:
+         pd.DataFrame: A count DataFrame with value and count columns.
+    """
+    if separator:
+        split_values = df[column_name].str.split(separator, expand=True).stack()
+        value_counts = split_values.value_counts().reset_index()
+    else:
+        value_counts = df[column_name].value_counts().reset_index()
+    value_counts.columns = ["strings", "count"]
+    return value_counts
 
-        abstract_cleaned = re.sub(r"\([^)]*\)", "", abstract.lower())
 
-        word_tokens = word_tokenize(abstract_cleaned)
-        filtered_sentence = []
+if __name__ == "__main__":
+    # Setup stop words usinig nltk.
+    nltk.download("punkt_tab")
+    nltk.download("stopwords")
+    stop_words = set(stopwords.words("english"))
+    stop_word_add = list(get_stop_words("en")) + [
+        "abstract",
+        ".",
+        ":",
+        "'",
+        '"',
+        ",",
+        "%",
+        "&",
+    ]
+    stop_words.update(stop_word_add)
+    print(f"Stop words are: {stop_words}")
 
-        for w in word_tokens:
-            if w not in stop_words:
-                filtered_sentence.append(w)
+    try:
+        # Set up Selenium WebDriver
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")  # Run in headless mode (no browser window)
+        driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()), options=options
+        )
 
-        # print(filtered_sentence)
-        abstract_filter_total.append(filtered_sentence)
+        print("Start.")
+        # Example search query
+        query = "dark matter"
+        papers = get_google_scholar_results(query)
 
-unique_words = list(set(abstract_filter_total))
-print(unique_words)
-# Close the driver
-driver.quit()
+        print(f"number of resources for searching '{query}': {len(papers)}")
+
+        df_old = None
+        for paper in papers:
+            url = paper["link"]
+            abstract = get_abstract(url)
+            if abstract is not None:
+                # print(abstract.lower())
+
+                abstract_cleaned = re.sub(
+                    r"\([^)]*\)", "", abstract.lower()
+                )  # abstract with lower cases without paranthesis.
+
+                # filter out stop words.
+                word_tokens = word_tokenize(abstract_cleaned)
+                filtered_sentence = []
+
+                for w in word_tokens:
+                    if w not in stop_words:
+                        filtered_sentence.append(w)
+
+                # Create dataframe that counts number of words in each available abstract.
+                df = pd.DataFrame({"strings": filtered_sentence})
+                df_count = string_to_count_df(
+                    df,
+                    "strings",
+                )
+                df_count_T = df_count.set_index("strings").T
+
+                # Update word counts of new abstracts into the final dataframe.
+                if df_old is None:
+                    df_old = df_count_T
+                else:
+                    df_new = pd.concat([df_old, df_count_T], sort=False).fillna(0)
+                    df_old = df_new
+            print(df_old)  # Display df of counts of words of abstract for each search.
+
+    # Close the driver
+    except Exception as e:
+        print(f"Error occured: {e}")
+    finally:  # ensure driver quits when error occurs.
+        driver.quit()
+        print("Web Driver Quit.")
