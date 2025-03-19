@@ -216,7 +216,7 @@ if __name__ == "__main__":
                     df_new = pd.concat([df_old, df_count_T], sort=False).fillna(0)
                     df_old = df_new
             print(df_old)  # Display df of counts of words of abstract for each search.
-
+        print(f"Result df: \n{print(df_old)}")
     # Close the driver
     except Exception as e:
         print(f"Error occured: {e}")
