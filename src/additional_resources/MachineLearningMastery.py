@@ -1,12 +1,73 @@
 import os
 import sys
 import pandas as pd
+import numpy as np
 import requests
 from bs4 import BeautifulSoup
 
 COMMENT_THRESHOLD = 100
-BASE_URL = 'https://machinelearningmastery.com/blog/'
-INDEX_OF_LAST_PAGE= -2
+INDEX_OF_LAST_PAGE = -2
+
+def load_keywords():
+    try:
+        with open("keywords.txt", "r") as file:
+            keywords = [line.strip() for line in file if line.strip()]
+        return keywords
+    except FileNotFoundError:
+        print("Error: 'keywords.txt' file not found. Make sure it is in the same folder as this script.")
+        return []
+    
+def search_machine_learning_mastery(query, headers):
+    # Search URL format for Machine Learning Mastery
+    base_url = "https://machinelearningmastery.com/"
+    search_url = f"{base_url}?s={query}"
+    
+    # Send a GET request
+    response = requests.get(search_url, headers=headers)
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        articles = []
+        number_of_pages = get_number_of_pages(response)
+        print(f"{number_of_pages} pages of articles found.")
+        for i in range(1, number_of_pages+1):
+            if i % 20 == 0:
+                print(f"Processing page {i} of {number_of_pages}.")
+            page_url = f"{base_url}?s={query}&paged={i}"
+            response = requests.get(page_url, headers=headers)
+
+            if response.status_code == 200:
+                articles += scan_page_for_articles(response, query)
+            else:
+                print(f"Failed to retrieve {page_url}. Status code: {response.status_code}")
+
+        return articles
+
+    else:
+        print(f"Failed to retrieve content. Status code: {response.status_code}")
+        return None
+    
+def get_number_of_pages(response):
+    soup = BeautifulSoup(response.content, 'html.parser')
+    try:
+        num_pages = int(soup.find_all('a', {"class": "page-numbers"})[INDEX_OF_LAST_PAGE].text.replace(',', ''))
+    except:
+        num_pages = 1
+    return num_pages
+
+def scan_page_for_articles(page_of_articles, query):
+        # Parse the HTML content
+        soup = BeautifulSoup(page_of_articles.content, 'html.parser')
+        
+        # Find relevant articles
+        articles = soup.find_all('h2', class_='entry-title')
+        results = []
+        for article in articles:
+            title = article.get_text()
+            link = article.a['href']
+            results.append((query, title, link))
+        
+        return results
 
 # Set up headers to mimic a real browser
 headers = {
@@ -14,59 +75,27 @@ headers = {
 }
 
 # Dataframe set up
-df = pd.DataFrame(columns=['URL', 'Title', 'Text'])
-index = 0
+df = pd.DataFrame(columns=['platform', 'query', 'title', 'url'])
+#index = 0
 
-# Get number of pages of articles to scan
-response = requests.get(BASE_URL, headers=headers)
-if response.status_code == 200:
-    soup = BeautifulSoup(response.text, 'html.parser')
-    last_page = soup.find_all('a', {"class": "page-numbers"})[INDEX_OF_LAST_PAGE].text.replace(',', '')
-    try:
-        last_page = int(last_page)
-    except Exception as e:
-        sys.exit(f"Error converting {last_page} to integer. ", e)
+# Get keywords
+keywords = load_keywords()
+if not keywords:
+    print("No keywords with which to search. Exiting.")
+    sys.exit()
 
-else:
-    sys.exit(f"Failed to retrieve number of pages. Status code: {response.status_code}")
+# Scrape Machine Learning Mastery
+data = []
+for word in keywords:
+    print(f"Searching Machine Learning Mastery for {word}.")
+    data += (search_machine_learning_mastery(word, headers))
 
-print(f"Scanning through {last_page} pages of articles...")
-
-# For every page, check if each article meets the engagement threshold and if so, save its contents to dataframe.
-for page_num in range(1, last_page+1):
-    print(f"Starting scan of page {page_num}...")
-    page_url = f'https://machinelearningmastery.com/blog/page/{page_num}/'
-    page_response = requests.get(page_url, headers=headers)
-    
-    if page_response.status_code == 200:
-        page_soup = BeautifulSoup(page_response.text, 'html.parser')
-        articles = page_soup.find_all('article')
-        
-        for article in articles:
-            num_comments = int(article.find('span', {'class': 'post-comments'}).text.replace(',', ''))
-
-            if num_comments < COMMENT_THRESHOLD:
-                continue
-
-            article_title = article.find('h2', {'class': 'title entry-title'}).text
-            article_url = article.find('a', href=True)['href']
-            article_text = ''
-            article_response = requests.get(article_url, headers=headers)
-            if article_response.status_code == 200:
-                article_soup = BeautifulSoup(article_response.text, 'html.parser')
-                paragraphs = article_soup.find('section', {'class': 'entry'}).find_all('p')
-                for paragraph in paragraphs:
-                    article_text += paragraph.text
-                
-                df.loc[index] = [article_url, article_title, article_text]
-                index += 1
-
-            else:
-                print(f"Failed to retrieve article {article_title}. Status code: {article_response.status_code}")
-
-    else:
-        print(f"Failed to retrieve page {page_num}. Status code: {page_response.status_code}")
+np_data = np.array(data)
+df = pd.DataFrame({'platform': 'MachineLearningMastery', 
+                   'query': np_data[:, 0].tolist(), 
+                   'title': np_data[:, 1].tolist(), 
+                   'url': np_data[:, 2].tolist()})
 
 # Output to CSV
 print("Saving data to csv.")
-df.to_csv('MachineLearningMastery.csv', index=False)
+df.dropna().to_csv('MachineLearningMastery.csv', index=False)
