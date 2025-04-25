@@ -1,7 +1,4 @@
-# Smart Tutor Knowledge Hub:
-# An Exploration of Clustering on Academic Abstracts
-
-# DS5230-Group1-FinalProject
+# Smart Tutor Knowledge Hub: An Exploration of Clustering on Academic Abstracts (DS5230-Group1-FinalProject)
 
 **Objective**
 Develop a system to group similar resources (e.g., articles, videos, or blog posts) into clusters
