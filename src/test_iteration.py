@@ -28,12 +28,14 @@ if __name__ == "__main__":
     keywords_to_search = "txt/output_keywords.txt"
     num_clusters = count_lines(keywords_to_search)
     iter = 1
-    print(f"This is {iter}-iteration after the initial clustering.")
+    print(f"This is iteration-{iter} after the initial clustering.")
     print(f"Number of clusters from previous iteration is: {num_clusters}")
 
     for cluster in range(num_clusters):
         print(f"Fetching keywords from cluster {cluster} of the previous iteration.")
-        text_content = read_line(keywords_to_search, cluster + 1).replace(", ", "\n")
+        text_content = read_line(
+            keywords_to_search, cluster + 1
+        )  # .replace(", ", "\n")
         with open(temp_file_path, "w") as file:
             file.write(text_content)
 
