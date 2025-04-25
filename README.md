@@ -1,3 +1,6 @@
+# Smart Tutor Knowledge Hub:
+# An Exploration of Clustering on Academic Abstracts
+
 # DS5230-Group1-FinalProject
 
 **Objective**
