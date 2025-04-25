@@ -418,7 +418,10 @@ def iteration(
     )
 
     print(embeddings.shape)
-
+    if embeddings.shape[0] < 30:
+        print("The embedding size is too small")
+        print(f"Stop the clustering of {fig_dir}")
+        return
     # Method adapted from:
     # GeeksforGeeks.(2025). Implementing an Autoencoder in PyTorch. Retrieved from https://www.geeksforgeeks.org/implementing-an-autoencoder-in-pytorch/
 

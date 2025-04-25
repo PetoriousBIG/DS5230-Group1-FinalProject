@@ -1,0 +1,3 @@
+sentiment, word, tweet, model, analysis, text, classification, accuracy, use, datum
+ai, tweeter, user, chatgpt, response, emotional, tweet, generative, ted, social
+emotion, model, word, task, network, representation, sentiment, dataset, phrase, approach

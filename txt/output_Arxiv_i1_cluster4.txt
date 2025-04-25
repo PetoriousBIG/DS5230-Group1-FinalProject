@@ -1,0 +1,3 @@
+ai, fairness, ml, bias, design, human, monotonicity, domain, model, discrimination
+bias, model, gender, fairness, attribute, ai, ml, fair, disparity, use
+fairness, ml, decision, model, bias, privacy, healthcare, datum, method, group

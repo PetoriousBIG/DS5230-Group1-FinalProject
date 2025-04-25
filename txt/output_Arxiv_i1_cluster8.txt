@@ -1,0 +1,6 @@
+language, multilingual, resource, model, transfer, cross, lingual, sign, low, task
+translation, language, llm, task, multilingual, speech, model, zero, shot, prompt
+code, mix, arabic, st, dataset, translation, literature, language, comi, lingua
+telugu, model, text, gcn, language, game, english, hindi, detection, classification
+non, legal, corpora, document, domain, english, language, benchmark, model, ner
+language, model, bert, task, nlp, multilingual, pre, text, learning, use

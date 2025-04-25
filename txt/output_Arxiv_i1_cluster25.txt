@@ -1,0 +1,5 @@
+coreset, selective, experience, replay, compression, imaging, compress, image, model, conventional
+learning, lifelong, learn, task, agent, environment, rl, model, reinforcement, knowledge
+algorithm, device, uav, pricing, microgrid, learning, drl, model, control, change
+task, learning, lifelong, memory, learn, propose, network, new, skill, chapter
+task, policy, optimal, algorithm, rl, problem, agent, learn, mdps, sequence

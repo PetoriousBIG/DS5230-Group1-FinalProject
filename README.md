@@ -75,3 +75,5 @@ make clean
 
 ## Analysis with Colab
 - If you are more used to Colab or Jupyter environment, you may check the [.ipynb file](src/FinalProject(Finalized).ipynb). This file is meant to be ran at Colab, and the current environment wouldn't work due to TensorFlow used in the file. Please use Colab environment, or use Jupytern with the same package dependencies as Colab.
+
+- Check [docs](docs/) for EDA and presentations.

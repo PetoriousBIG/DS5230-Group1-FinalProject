@@ -1,0 +1,3 @@
+ai, artist, art, creative, creativity, concern, generative, professional, image, hci
+music, ai, musical, human, model, generate, musician, composition, user, use
+ai, art, generative, human, creative, user, creativity, machine, artist, artistic

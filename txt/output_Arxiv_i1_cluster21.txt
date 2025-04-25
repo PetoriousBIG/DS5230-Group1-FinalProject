@@ -1,0 +1,12 @@
+datum, warehouse, agricultural, big, data, equipment, agribusiness, station, source, dataset
+diversification, household, anisotropic, experiment, model, analysis, benefit, cereal, farm, yield
+ai, iot, agriculture, greenhouse, crop, prediction, ml, review, internet, robotic
+iot, farming, smart, agriculture, food, ksa, challenge, south, sector, goal
+farmer, chatbot, sensor, agrotic, communication, agriculture, lora, propose, crop, agricultural
+ai, ml, soc, climate, datum, emission, agriculture, fusion, practice, agent
+agi, language, query, multimodal, dataset, farmer, disease, potential, finetune, leverage
+threat, identify, cybersecurity, cyberattack, farm, sap, kentucky, bus, farming, security
+science, digital, datum, privacy, farmer, framework, agriculture, scf, farm, secure
+uavs, drone, connectivity, byon, application, agriculture, time, farm, saving, broadband
+sam, shot, zero, type, map, mapping, crop, image, segmentation, segment
+yolo, detection, object, animal, variant, yolov, survey, ssd, classification, net

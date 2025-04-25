@@ -1,0 +1,3 @@
+model, image, diffusion, gan, adversarial, method, generative, generate, text, network
+image, text, model, prompt, generation, diffusion, guide, approach, concept, generate
+image, model, diffusion, generation, text, method, base, datum, layout, medical

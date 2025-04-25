@@ -1,0 +1,13 @@
+privacy, federate, organization, fl, model, datum, preserve, framework, fedmic, learning
+progress, benchmark, task, machine, impressive, logistic, pace, propel, forward, engagement
+fms, datum, healthcare, learning, world, real, different, model, learn, emr
+image, map, spinal, medical, model, rad, level, dataset, feature, organize
+multimodal, fusion, datum, ml, tabular, modality, clinical, fuse, condition, application
+attack, dnn, defence, adversarial, medical, deep, inference, example, defense, vulnerable
+llm, semantic, language, medical, transformer, architecture, report, medicine, metric, include
+picture, include, feature, medical, subset, illness, ophthalmology, markedly, necessity, multidimensional
+attribution, clinicxai, interpretability, model, stakeholder, chest, deep, trust, expert, ray
+image, learning, machine, medical, deep, imaging, model, analysis, sam, lesion
+image, report, fundus, retinal, medical, disease, propose, modal, enhance, generation
+uncertainty, survival, medical, intra, estimation, review, variability, imaging, machine, inter
+gan, image, ai, application, generative, physician, augmentation, reconstruction, medical, clinical

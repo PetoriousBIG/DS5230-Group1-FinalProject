@@ -1,0 +1,3 @@
+edge, ai, learning, datum, device, network, wireless, inference, iot, communication
+iot, computing, cloud, fog, edge, smart, technology, communication, network, device
+iot, energy, device, propose, uav, scheme, network, base, learning, wireless
