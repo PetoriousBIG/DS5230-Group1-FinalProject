@@ -1,12 +1,14 @@
 import pickle
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
 """
 After saving cookies, we need to load it and refresh the page to apply cookies. 
 This is one time process. After the cookies is added, you are free to go. 
 """
-
 # Open Google Scholar
-driver = webdriver.Chrome()
+driver_path = open("txt/driver_path.txt", "r").read().rstrip()
+driver = webdriver.Chrome(service=Service(driver_path))
 driver.get("https://scholar.google.com")
 
 # Load saved cookies

@@ -1,5 +1,6 @@
 import pickle
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 """
 Reason to do this is because Google Scholar prevents a CAPTCHA challenge to verify user is a robot or human. Using python
@@ -13,7 +14,12 @@ https://www.octoparse.com/blog/is-web-crawling-legal-well-it-depends
 """
 
 # Open browser
-driver = webdriver.Chrome()
+driver_path = (
+    open("driver_path.txt", "r").read().rstrip()
+)  # Change this to your actual chromedriver path
+
+service = Service(driver_path)
+driver = webdriver.Chrome(service=service)
 driver.get("https://scholar.google.com")
 
 # Pause to manually solve CAPTCHA
