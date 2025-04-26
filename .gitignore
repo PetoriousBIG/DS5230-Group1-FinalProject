@@ -2,6 +2,8 @@ data/*
 temp/*
 API_key.ini
 fig/*
+
+*.csv
 # cookie
 *.pkl
 

@@ -54,7 +54,7 @@ make search_medium
 make search_youtube
 ```
 
-- Use following command to run the initial clustering using the [Arxiv_Resources.csv file](data/Arxiv_Resources.csv) scraped from the previous step:
+- Use following command to run the initial clustering using the `data/Arxiv_Resources.csv' scraped from the previous step:
 ```
 make test
 ```
@@ -74,6 +74,6 @@ make clean
 ```
 
 ## Analysis with Colab
-- If you are more used to Colab or Jupyter environment, you may check the [.ipynb file](src/FinalProject(Finalized).ipynb). This file is meant to be ran at Colab, and the current environment wouldn't work due to TensorFlow used in the file. Please use Colab environment, or use Jupytern with the same package dependencies as Colab.
+- If you are more used to Colab or Jupyter environment, you may check the files in [colab_src](colab_src/). This file is meant to be ran at Colab, and the current environment may not be compatible. Please use Colab environment, or use Jupytern with the same package dependencies as Colab.
 
-- Check [docs](docs/) for EDA and presentations.
+- The presentation in [docs](docs/) were done based on the analysis in [src_old/Clustring/FinalProject(Finalized).ipynb](src_old/Clustring/FinalProject(Finalized).ipynb). However, this file did not include lemmatization in preprocessing. As a result, the correct analysis with 
