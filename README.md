@@ -21,7 +21,7 @@ conda env create -f environment.yml
 conda activate ds5230
 ```
 
-- In order to use Spacy package properly, you need to run following code too:
+- In order to use Spacy package properly, you need to run following command too:
 ```
 python -m spacy download en_core_web_sm
 ```
@@ -29,6 +29,11 @@ python -m spacy download en_core_web_sm
 - Make sure you have chromedriver installed. Following command will automatically create a .txt file in txt/ which will set the path for the chromedriver for the repo:
 ```
 make driver_path
+```
+
+- Run following command to craete required directories:
+```
+setup
 ```
 
 - You need to create 'API_key.ini' with API_keys for Youtube and Google scholar. Use 'API_key_template.ini' file as a template. Make sure 'API_key.ini' is listed in '.gitignore', so you will NEVER share your API_key to the public.

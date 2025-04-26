@@ -1,6 +1,10 @@
 driver_path:
 	which chromedriver > txt/driver_path.txt
 
+setup:
+	mkdir data
+	mkdir temp
+
 show_keywords:
 	cat txt/keywords.txt
 

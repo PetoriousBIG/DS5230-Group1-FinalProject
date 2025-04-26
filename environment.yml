@@ -325,6 +325,3 @@ dependencies:
   - zlib=1.3.1=hb9d3cd8_2
   - zstandard=0.23.0=py312h66e93f0_1
   - zstd=1.5.7=hb8e6e7a_2
-  - pip:
-      - en-core-web-sm==3.8.0
-prefix: /home/jaee/miniconda3/envs/ds5230
