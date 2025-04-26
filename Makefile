@@ -8,12 +8,8 @@ setup:
 show_keywords:
 	cat txt/keywords.txt
 
-cookie:
-	python -B src/CAPTCHA.py
-	python -B src/applyCookies.py
-
 search_scholar:
-	python -B src/ExtractGoogleScholar.py
+	python -B src/googlescholar.py
 
 search_arxiv:
 	python -B src/arxiv.py

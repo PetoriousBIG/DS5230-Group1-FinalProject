@@ -1,3 +1,4 @@
-image, text, model, diffusion, generation, generate, prompt, quality, high, process
-image, medical, model, diffusion, hand, generative, generate, stable, diversity, use
-image, model, diffusion, resolution, generate, detection, text, method, message, generative
+object, detection, image, model, deep, method, learning, datum, face, task
+face, mask, detection, detector, image, model, map, recognition, dataset, use
+scene, remote, object, photo, video, visual, nir, thermal, datum, sense
+face, landmark, image, facial, resolution, recognition, alignment, use, age, label
