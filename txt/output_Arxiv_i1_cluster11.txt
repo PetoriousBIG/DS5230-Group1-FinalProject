@@ -1,3 +1,3 @@
-xai, ai, user, center, design, human, explainability, technical, algorithm, research
-ai, xai, explanation, human, user, decision, performance, cognitive, task, support
-ai, xai, model, method, decision, user, application, explanation, human, healthcare
+ai, ethic, principle, practitioner, ethical, design, practice, virtue, challenge, study
+ai, governance, framework, risk, ethical, question, standard, trustworthy, ensure, responsible
+ai, ethical, responsible, principle, pattern, requirement, framework, safety, research, development

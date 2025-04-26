@@ -1,3 +1,6 @@
-ai, ethic, practitioner, ethical, principle, technology, practice, virtue, moral, normative
-ai, governance, risk, ethical, question, framework, principle, responsible, rai, incident
-ai, ethical, responsible, development, practice, framework, principle, governance, research, ethic
+inference, dre, discriminator, test, use, segmentor, gan, discard, method, time
+gan, image, capsule, network, attention, style, resolution, model, generate, use
+gan, project, kd, datum, generation, evolutionary, model, modal, use, audio
+gan, image, method, training, generate, generator, adversarial, classifier, unbalanced, train
+gan, datum, training, train, framework, use, generate, model, objective, conditional
+adversarial, gan, discriminator, training, generator, sample, attack, extraction, improve, model

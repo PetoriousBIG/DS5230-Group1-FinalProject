@@ -1,4 +1,6 @@
-drl, game, agent, learning, reinforcement, competition, play, deep, model, network
-policy, tree, learning, autonomous, agent, decision, learn, algorithm, deep, driving
-agent, multi, game, algorithm, opponent, learning, strategy, deep, optimal, learn
-imitation, learning, expert, learn, reward, policy, reinforcement, adversarial, human, method
+iot, agriculture, image, technology, fms, wot, agricultural, ai, smart, research
+discovery, gpt, scientific, llm, idea, ai, agent, benchmark, research, human
+ml, management, datum, sustainable, ai, agricultural, topic, rl, practice, review
+production, method, condition, impact, environmental, aral, managerial, algorithmic, scientifically, sea
+llm, farmer, agricultural, language, model, agriculture, retrieval, question, gpt, plant
+disease, yolo, agricultural, agriculture, model, image, multimodal, challenge, yolov, vision

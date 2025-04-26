@@ -1,3 +1,5 @@
-ai, artist, art, creative, creativity, concern, generative, professional, image, hci
-music, ai, musical, human, model, generate, musician, composition, user, use
-ai, art, generative, human, creative, user, creativity, machine, artist, artistic
+model, task, bert, language, nlp, text, learning, training, use, multi
+model, detection, bert, language, text, task, use, nlp, game, legal
+model, multilingual, language, bert, base, task, train, nlp, text, pre
+model, clinical, bert, domain, legal, medical, biomedical, aki, language, trial
+model, mask, bert, bit, language, brain, tuning, attack, fine, npe

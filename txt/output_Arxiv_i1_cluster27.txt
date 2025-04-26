@@ -1,14 +1,3 @@
-abq, dimension, advantage, sub, involve, action, approach, high, space, ant
-player, architecture, action, iota, suggest, vector, utility, contextual, network, discrete
-scale, morl, learn, learning, ser, objective, qdeltafunction, tddelta, time, optimal
-policy, agent, multi, marl, maddpg, decentralize, deterministic, space, ppo, discrete
-representation, controller, gradient, critic, point, offline, robustness, residual, second, learning
-function, value, state, action, learning, learn, algorithm, horizon, method, policy
-soft, deep, activation, policy, augmentation, activate, generalize, gd, entropy, train
-critic, network, director, target, quality, improved, actor, low, framework, action
-deep, dql, network, order, dqns, dpgd, routing, method, allocate, bandwidth
-policy, action, gradient, function, rl, learning, value, advice, method, state
-qmix, joint, action, man, entropy, multi, optimal, value, space, large
-tau, probability, communication, wireless, ddqn, previous, dqn, exceed, threshold, epsilongreedy
-provably, overestimation, learning, double, mitigate, alternative, convergent, converge, asymptotic, algorithm
-clip, candidate, double, estimator, underestimation, action, set, maximum, bias, expect
+game, learn, agent, rl, learning, goal, pendulum, text, algorithm, interface
+agent, policy, multi, reward, learning, marl, game, reinforcement, learn, action
+agent, policy, deep, learn, environment, learning, algorithm, reinforcement, model, use

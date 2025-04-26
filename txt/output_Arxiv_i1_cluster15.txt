@@ -1,3 +1,4 @@
-molecule, model, drug, generate, design, target, property, generative, language, discovery
-drug, molecular, representation, target, graph, learning, protein, method, model, molecule
-drug, ai, discovery, llm, xai, datum, artificial, intelligence, indication, researcher
+healthcare, datum, privacy, medical, security, institution, use, blockchain, imaging, provide
+healthcare, iot, edge, application, device, computing, datum, quality, internet, cloud
+big, datum, analytic, data, computing, cloud, video, technology, use, research
+mental, datum, healthcare, ml, analytic, big, predictive, tool, health, clinician

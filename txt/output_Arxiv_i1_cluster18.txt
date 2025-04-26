@@ -1,3 +1,3 @@
-graph, node, gnn, representation, learning, cluster, structure, base, feature, tail
-graph, node, gnn, class, level, layer, message, edgeless, feature, representation
-graph, gnn, node, information, representation, learning, learn, structure, model, feature
+ai, fairness, ml, causal, bias, design, model, monotonicity, domain, discrimination
+fairness, model, ml, decision, bias, attribute, group, datum, healthcare, learning
+bias, gender, ai, model, fairness, human, social, ml, use, fair

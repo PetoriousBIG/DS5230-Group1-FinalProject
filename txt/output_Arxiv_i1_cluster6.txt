@@ -1,14 +1,3 @@
-client, mvts, fl, fedko, random, detection, protocol, anomaly, superior, smart
-graph, community, client, gad, iid, model, anomaly, non, ideal, train
-evaluation, wind, testbe, fl, turbine, poisoning, federate, imbalance, datum, class
-model, datum, learn, anomaly, federate, rs, md, learning, spectrum, detection
-pca, sparsity, iot, component, network, detection, anomaly, structured, wise, device
-learning, federate, privacy, party, threat, feature, model, factorization, matrix, type
-tolerance, selection, client, fault, privacy, performance, noise, constraint, road, adaptive
-survival, federate, sequence, learning, fedsurf, analysis, improve, performance, neural, protein
-iot, learning, building, datum, network, task, generate, energy, cost, federate
-client, organization, anomaly, detection, threshold, distribution, unknown, summary, anomalous, calculation
-anomaly, network, detection, datum, series, algorithm, node, stream, attribute, federate
-attack, model, sybil, defense, backdoor, gradient, update, client, local, differential
-deep, edge, anomaly, daef, autoencoder, model, detection, compression, worker, fl
-learning, model, federate, client, fedavg, architecture, participant, obstacle, include, concept
+learning, deep, algorithm, reinforcement, model, problem, learn, drl, policy, use
+quantum, machine, learning, agent, classical, deep, domain, reinforcement, circuit, game
+imitation, learning, expert, policy, learn, algorithm, adversarial, method, reinforcement, reward
