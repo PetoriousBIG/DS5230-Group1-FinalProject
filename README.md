@@ -76,4 +76,6 @@ make clean
 ## Analysis with Colab
 - If you are more used to Colab or Jupyter environment, you may check the files in [colab_src](colab_src/). This file is meant to be ran at Colab, and the current environment may not be compatible. Please use Colab environment, or use Jupytern with the same package dependencies as Colab.
 
-- The presentation in [docs](docs/) were done based on the analysis in [src_old/Clustring/FinalProject(Finalized).ipynb](src_old/Clustring/FinalProject(Finalized).ipynb). However, this file did not include lemmatization in preprocessing. As a result, the correct analysis with 
+- The presentation in [docs](docs/) were done based on the analysis in [src_old/Clustring/FinalProject(Finalized).ipynb](src_old/Clustring/FinalProject(Finalized).ipynb). However, this file did not include lemmatization in preprocessing.
+
+- In the final report, this problem is fixed, and `Google Scholar Data Scraper.ipynb' in [colab_src](colab_src/) was used for the analysis.
